@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,263 @@ body {
 
 .form-title{
   padding-bottom: 10px;
+}
+
+.strike {
+  text-decoration: line-through;
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(
+    rgb(255, 16, 16) 0%,
+    rgb(255, 183, 100) 100%
+  );
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 60%;
+  min-height: 600px;
+  background: white;
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
+
+.btn-add-item {
+  padding: 16px;
+  border-color: rgb(0, 99, 13);
+  border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  outline: none;
+  background: 
+  rgb(0, 153, 0);
+  text-transform: capitalize;
+  width: 102px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.button-add{
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button-cancel{
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-cancel-item {
+  padding: 16px;
+  border-color: red;
+  border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  outline: none;
+  background: 
+  rgb(255, 17, 17);
+  color: white;
+  text-transform: capitalize;
+  width: 85px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-add-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 60%;
+  min-height: 300px;
+  background: white;
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+h1 {
+  padding-top: 20px;
+  margin: 32px 0;
+  font-size: 33px;
+  font-style: bold;
+}
+
+.header{
+  text-align: center;
+  font-size: 50px;
+  font-style: bold;
+}
+
+footer{
+  text-align: center;
+  font-size: 20px;
+  font-style: bold;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.todo-form {
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+.todo-input {
+  padding: 14px 32px 14px 16px;
+  border-radius: 6px 0 0 6px;
+  border: 2px solid rgb(255, 152, 17);
+  outline: none;
+  width: 320px;
+}
+
+@media only screen and (max-width: 600px) {
+  .todo-input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 6px 0 0 6px;
+    border: 2px solid rgb(255, 152, 17);
+    outline: none;
+    width: 100px;
+  }
+  .btn-refresh {
+    padding: 16px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    outline: none;
+    background: 
+    rgb(255, 152, 17);
+    color: white;
+    width: 100px;
+    text-transform: capitalize;
+  }
+}
+
+.todo-button {
+  padding: 16px;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  outline: none;
+  background: 
+  rgb(255, 152, 17);
+  color: white;
+  text-transform: capitalize;
+  border: none;
+}
+
+.button-get{
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button-deleteTask{
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.button-get-item{
+  padding: 10px;
+  background: 
+  rgb(255, 152, 17);
+  color: white;
+  text-transform: capitalize;
+  border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  outline: none;
+  border-color: red;
+  width: 100px;
+}
+
+.button-deleteTask-item{
+  padding: 10px;
+  background: 
+  rgb(255, 17, 17);
+  color: white;
+  text-transform: capitalize;
+  border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  outline: none;
+  border-color: red;
+  width: 100px;
+}
+
+/* .btn-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 16px;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  outline: none;
+  background:
+  rgb(255, 152, 17);
+  color: white;
+  width: 50px;
+  text-transform: capitalize;
+} */
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.todo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px auto;
+  color: white;
+  background: 
+  rgb(255, 152, 17);
+  padding: 16px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.iconRefresh {
+  align-items: center;
+  font-size: 36px;
+}
+
+.seperator {
+  height: 1px;
+  width: 90%;
+  align-self: center;
+  background-color: black;
 }
