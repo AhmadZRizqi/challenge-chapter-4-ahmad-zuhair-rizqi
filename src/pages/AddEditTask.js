@@ -3,8 +3,6 @@ import  { useNavigate, useParams } from "react-router-dom";
 import '../App';
 import '../App.css';
 import TodoForm from "../components/ToDoForm";
-import TodoList from "../components/ToDoList";
-import Loading from "../components/Loading";
 import axios from "axios";
 
 export default function AddEditTask(){
@@ -22,7 +20,8 @@ export default function AddEditTask(){
             complete:false,
         })
         .then(()=>{navigate('/');}
-        )
+        
+        ) 
     }
 };
     const handleEdit = async (task) => { if (task == '') {

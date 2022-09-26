@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import '../pages/Home'
-import { useNavigate } from 'react-router-dom';
 
 export default function TodoForm(props) {
   const [input, setInput] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

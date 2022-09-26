@@ -1,7 +1,6 @@
 import  { useState, useEffect } from "react";
 import '../App';
 import '../App.css';
-import TodoForm from "../components/ToDoForm";
 import TodoList from "../components/ToDoList";
 import Loading from "../components/Loading";
 import axios from "axios";
@@ -10,8 +9,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 function Home() {
   const [data, setData] = useState([]);
-  const [arr, setArr] = useState([]);
-  const kosong = [];
   const [loading, setLoading] = useState(false);
   const [refetchData, setRefetchData] = useState(true);
   const [search, setSearch] = useState('');
@@ -31,7 +28,6 @@ function Home() {
       .finally(() => {
         setLoading(false);
         setRefetchData(false);
-        setArr(data);
       });
   };
 
@@ -55,7 +51,7 @@ function Home() {
 
   const handleDeleteDone = async () => {
     Promise.all(
-      arr.filter(e => e.complete).map(async ({ id }) => {
+      data.filter(e => e.complete).map(async ({ id }) => {
         await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
           method:'DELETE',
         })
@@ -66,7 +62,7 @@ function Home() {
 
   const handleDeleteALL = async () => {
     Promise.all(
-      arr.filter(e => e.id).map(async ({ id }) => {
+      data.filter(e => e.id).map(async ({ id }) => {
         await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
           method:'DELETE',
         })
@@ -75,7 +71,7 @@ function Home() {
     setRefetchData(true)
   };
 
-  const completeTodo = async (id) => {
+  const handleComplete = async (id) => {
     let updatedTodos = data.map((todo) => {
       if (todo.id === id) {
         todo.complete = !todo.complete;
@@ -87,26 +83,6 @@ function Home() {
     });
     setData(updatedTodos);
   };
-
-  // const del = async (id) => data.map((todo) => {
-  //     if (todo.id === id) {
-  //       axios.delete(` https://fake-api-coba.herokuapp.com/todos/${todo}`)
-  //     }
-  //     return todo;
-  //   } 
-  // );
-
-//   const completeTodo = async (id) => {
-//     await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
-//       method: "PATCH",
-//       data:{
-//         complete:true,
-//     }
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
 
   const handleGetComplete = async () => {
     setLoading(true);
@@ -236,7 +212,7 @@ function Home() {
         return (
           <TodoList
             handleDelete={handleDelete}
-            completeTodo={completeTodo}
+            handleComplete={handleComplete}
             todo={todo}
             key={todo.id}
           />

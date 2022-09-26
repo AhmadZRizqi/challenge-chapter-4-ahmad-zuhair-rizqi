@@ -221,16 +221,16 @@ footer{
 }
 
 .todo-row {
+  background: 
+  rgb(255, 152, 17);
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 6px auto;
-  color: white;
-  background: 
-  rgb(255, 152, 17);
-  padding: 16px;
-  border-radius: 8px;
-  width: 90%;
 }
 
 .icons-list {

@@ -2,10 +2,10 @@ import React from "react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MdDeleteForever } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function TodoList(props) {
-  const { todo, handleDelete, completeTodo } = props;
+  const { todo, handleDelete, handleComplete } = props;
   const navigate = useNavigate();
   return (
     <div
@@ -19,7 +19,7 @@ export default function TodoList(props) {
         />
         <HiCheckCircle
             style={{ marginRight: 7 }} 
-            onClick={() => completeTodo(todo.id)} />
+            onClick={() => handleComplete(todo.id)} />
 
         <AiFillEdit 
             onClick={() => navigate(`/task/${todo.id}`)} />
