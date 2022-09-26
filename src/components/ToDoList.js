@@ -1,6 +1,6 @@
 import React from "react";
-import { BiCheckCircle } from "react-icons/bi";
-import { RiCloseCircleLine } from "react-icons/ri";
+import { HiCheckCircle } from "react-icons/hi";
+import { MdDeleteForever } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -9,16 +9,16 @@ export default function TodoList(props) {
   const navigate = useNavigate();
   return (
     <div
-      className={todo.complete ? "todo-row complete": "todo-row"}
+      className={todo.complete ? "todo-row done": "todo-row"}
     >
       {todo.task}
-      <div className="iconsContainer">
-        <RiCloseCircleLine
-            style={{ marginRight: 5 }}
+      <div className="icons-list">
+        <MdDeleteForever
+            style={{ marginRight: 7 }}
             onClick={() => handleDelete(todo.id)}
         />
-        <BiCheckCircle
-            style={{ marginRight: 5 }} 
+        <HiCheckCircle
+            style={{ marginRight: 7 }} 
             onClick={() => completeTodo(todo.id)} />
 
         <AiFillEdit 

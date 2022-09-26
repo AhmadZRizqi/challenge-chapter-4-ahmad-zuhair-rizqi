@@ -10,7 +10,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 function Home() {
   const [data, setData] = useState([]);
-  const [cmp, setCmp] = useState(true);
+  const [arr, setArr] = useState([]);
+  const kosong = [];
   const [loading, setLoading] = useState(false);
   const [refetchData, setRefetchData] = useState(true);
   const [search, setSearch] = useState('');
@@ -30,6 +31,7 @@ function Home() {
       .finally(() => {
         setLoading(false);
         setRefetchData(false);
+        setArr(data);
       });
   };
 
@@ -49,30 +51,50 @@ function Home() {
     .catch((err) => {
       console.log(err);
     });
-};
-  //   let updatedTodos = [...data].filter((todo) => todo.id !== id);
-  //   setData(updatedTodos);
-  // };
-  // const completeTodo = async (id) => { if (data.complete === false){
-  //   axios.patch(` https://fake-api-coba.herokuapp.com/todos${id}`,{
-  //       complete: true,
-  //     })
-  // }
+  };
 
-  // };
+  const handleDeleteDone = async () => {
+    Promise.all(
+      arr.filter(e => e.complete).map(async ({ id }) => {
+        await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
+          method:'DELETE',
+        })
+      })
+    )
+    setRefetchData(true)
+  };
+
+  const handleDeleteALL = async () => {
+    Promise.all(
+      arr.filter(e => e.id).map(async ({ id }) => {
+        await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
+          method:'DELETE',
+        })
+      })
+    )
+    setRefetchData(true)
+  };
 
   const completeTodo = async (id) => {
     let updatedTodos = data.map((todo) => {
       if (todo.id === id) {
         todo.complete = !todo.complete;
+        axios.patch(` https://fake-api-coba.herokuapp.com/todos/${id}`,{
+          complete:todo.complete,
+        })
       }
-      axios.patch(` https://fake-api-coba.herokuapp.com/todos/${id}`,{
-        complete:todo.complete,
-      })
       return todo;
     });
     setData(updatedTodos);
   };
+
+  // const del = async (id) => data.map((todo) => {
+  //     if (todo.id === id) {
+  //       axios.delete(` https://fake-api-coba.herokuapp.com/todos/${todo}`)
+  //     }
+  //     return todo;
+  //   } 
+  // );
 
 //   const completeTodo = async (id) => {
 //     await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
@@ -118,25 +140,25 @@ function Home() {
       });
   };
 
-  const handleGetAll = async () => {
-    setLoading(true);
-    axios({
-      method: 'GET',
-      url: ' https://fake-api-coba.herokuapp.com/todos',
-    })
-      .then((res) => {
-        setData(res?.data);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setLoading(false);
-        setRefetchData(false);
-      });
-  };
+  // const handleGetAll = async () => {
+  //   setLoading(true);
+  //   axios({
+  //     method: 'GET',
+  //     url: ' https://fake-api-coba.herokuapp.com/todos',
+  //   })
+  //     .then((res) => {
+  //       setData(res?.data);
+  //     })
+  //     .catch((err) => console.log(err))
+  //     .finally(() => {
+  //       setLoading(false);
+  //       setRefetchData(false);
+  //     });
+  // };
 
   return (
     <div className="todo-app">
-      <h1>Todo List</h1>
+      <h1>TodoSearch</h1>
       <div className="todo-form">
         <input
           value={search}
@@ -174,6 +196,7 @@ function Home() {
         <BiRefresh onClick={() => setRefetchData(true)}/>
       </div>
 
+      <h1>TodoList</h1>
       <div className="button-get">
         <button
               className="button-get-item"
@@ -184,7 +207,7 @@ function Home() {
         <button
               className="button-get-item"
               style={{ marginRight: 5 }}
-              onClick={() => handleGetAll()}>
+              onClick={() => setRefetchData(true)}>
                 Show All Task
         </button>
         <button
@@ -197,10 +220,12 @@ function Home() {
       <div className="button-deleteTask">
         <button
               className="button-deleteTask-item"
-              style={{ marginRight: 5 }}>
+              style={{ marginRight: 5 }}
+              onClick={() => handleDeleteDone()}>
                 Delete Done Task
         </button>
         <button
+              onClick={() => handleDeleteALL()}
               className="button-deleteTask-item">
                 Delete All Task
         </button>

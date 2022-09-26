@@ -10,19 +10,19 @@ import axios from "axios";
 export default function AddEditTask(){
     const [data, setData] = useState([]);
     const navigate = useNavigate();
-    const [refetchData, setRefetchData] = useState(true);
     const params = useParams();
     // const [refetchData, setRefetchData] = useState(true);
+    
     const handleAdd = async (task) => { if (task == '') {
         // e.preventDefault();
         alert("Masukkan Data Terlebih Dahulu")
       } else {
-         axios.post(` https://fake-api-coba.herokuapp.com/todos`,{
+        axios.post(` https://fake-api-coba.herokuapp.com/todos`,{
             task:task,
             complete:false,
         })
-        .then(()=>{navigate('/');
-        setRefetchData(true)})
+        .then(()=>{navigate('/');}
+        )
     }
 };
     const handleEdit = async (task) => { if (task == '') {
