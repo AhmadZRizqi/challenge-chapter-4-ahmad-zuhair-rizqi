@@ -12,6 +12,19 @@ body {
   );
 }
 
+h1 {
+  padding-top: 20px;
+  margin: 32px 0;
+  font-size: 33px;
+  font-style: bold;
+}
+
+.header{
+  text-align: center;
+  font-size: 50px;
+  font-style: bold;
+}
+
 .todo-app {
   display: flex;
   flex-direction: column;
@@ -84,19 +97,6 @@ body {
   margin: 128px auto;
   border-radius: 10px;
   justify-content: center;
-}
-
-h1 {
-  padding-top: 20px;
-  margin: 32px 0;
-  font-size: 33px;
-  font-style: bold;
-}
-
-.header{
-  text-align: center;
-  font-size: 50px;
-  font-style: bold;
 }
 
 footer{

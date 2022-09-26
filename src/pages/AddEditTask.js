@@ -11,7 +11,7 @@ export default function AddEditTask(){
     const params = useParams();
     // const [refetchData, setRefetchData] = useState(true);
     
-    const handleAdd = async (task) => { if (task == '') {
+    const handleAdd = async (task) => { if (task === '') {
         // e.preventDefault();
         alert("Masukkan Data Terlebih Dahulu")
       } else {
@@ -24,7 +24,7 @@ export default function AddEditTask(){
         ) 
     }
 };
-    const handleEdit = async (task) => { if (task == '') {
+    const handleEdit = async (task) => { if (task === '') {
         // e.preventDefault();
         alert("Masukkan Data Terlebih Dahulu")
     } else {

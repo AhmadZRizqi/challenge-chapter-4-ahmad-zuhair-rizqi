@@ -1,13 +1,8 @@
 import React from "react";
-import axios from "axios";
-import  { useState, useEffect } from "react";
 import './App.css';
-import Loading from "./components/Loading";
-import TodoList from "./components/ToDoList";
 import { Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Wrapper from "./components/Wrapper";
-import TodoItem from "./components/ToDoList";
 import {BrowserRouter} from 'react-router-dom';
 import AddEditTask from "./pages/AddEditTask";
 
